@@ -17,7 +17,7 @@ module.exports = function(app){
         var json = req.body;
         // console.log(json);
         // var person = { name : json.name, photo : json.photo };
-        console.log(person);
+        console.log(json);
         users.push(json);
         res.json(json); 
 
