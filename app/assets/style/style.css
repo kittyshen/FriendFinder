@@ -1,9 +1,20 @@
 body{
     background-image: url(../img/image2.jpg);
     background-repeat: cover;
-
+    color: rgb(89, 89, 89);
 }
 
 h1{
     color:grey;
+}
+
+#change2Survey{
+    margin-top:4em;
+}
+#surveyAppendHere{
+    /* padding-top:4em; */
+}
+
+.survey{
+    padding-top: 1.5em;
 }
