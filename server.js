@@ -5,7 +5,7 @@ var path = require('path');
 // Sets up the Express App
 // =============================================================
 var app = express(); // Tells node that we are creating an "express" server
-var PORT = process.env.PORT || 8080; 
+var PORT = process.env.PORT || 3000; 
 
 app.use(express.static("app"));
 app.use(bodyParser.json());

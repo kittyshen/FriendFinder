@@ -44,7 +44,7 @@
                 </div>
                 <div class ="col-md-6 col-xs-12">
                     <label for="formGroupExampleInput">Upload your photo</label>
-                    <input type="text" class="form-control" id="photo" placeholder="Your Profile Picture">
+                    <input type="url" class="form-control" id="photo" placeholder="Your Profile Picture">
                 </div> 
                 <hr>
                 <div id = "surveyAppendHere"  >
@@ -104,7 +104,12 @@ $("#add-btn").on("click", function (event) {
     var fillout =true;
     for(var i = 1 ; i <=10 ; i++){
         var radioBtn = $('#score'+i+' input:radio:checked').val();
-        if(radioBtn == null){ fillout= false; console.log(fillout)};
+        if(radioBtn == null){ 
+            fillout= false; 
+            console.log(fillout); 
+            alert("Please check all survey field");
+            return;
+        }
         score.push(radioBtn);
     
     }
@@ -125,7 +130,7 @@ $("#add-btn").on("click", function (event) {
         }).always( function(){
 
             // userList.push(person);
-            if (!$("#photo").val().trim() && !fillout) {
+            if (!$("#photo").val().trim() ) {
                 alert("Make sure all form fields are filled out.")
             }
             else {
@@ -139,7 +144,7 @@ $("#add-btn").on("click", function (event) {
                     .then(function (data) {
                         console.log(data);
 
-                        $("#content").html("<h2>" + data.name + "</h2>" + "<img src = '" + data.photo + "' alt='ppl' width ='300px'>");
+                        $("#content").html("<h2> Your soul match</h2>" + "<img src = '" + data.photo + "' alt='ppl' width ='300px'><h2>" + data.name + "</h2>");
 
                         alert("you are added.");
                     });
