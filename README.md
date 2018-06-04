@@ -120,7 +120,7 @@ Please see [Heroku’s Account Verification Information](https://devcenter.herok
 ```  
 
 ## Link to the site
-[Click me]( )
+[Click me](https://polar-thicket-16501.herokuapp.com )
 
 ## Author 
 [Kitty Shen ](https://github.com/kittyshen)
