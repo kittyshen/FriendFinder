@@ -33,10 +33,6 @@ You will use Express to handle routing. Make sure you deploy your app to Heroku 
     - server.js
   ```
 
-### Submission on BCS
-
-* Please submit both the deployed Heroku link to your homework AND the link to the Github Repository!
-
 ### Instructions
 
 1. Your survey should have 10 questions of your choosing. Each answer should be on a scale of 1 to 5 based on how much the user agrees or disagrees with a question.
@@ -88,17 +84,6 @@ You will use Express to handle routing. Make sure you deploy your app to Heroku 
 7. Once you've found the current user's most compatible friend, display the result as a modal pop-up.
    * The modal should display both the name and picture of the closest match.
 
-### Minimum Requirements
-
-Attempt to complete homework assignment as described in instructions. If unable to complete certain portions, please pseudocode these portions to describe what remains to be completed. Adding a README.md as well as adding this homework to your portfolio are required as well and more information can be found below.
-
-- - -
-
-### Hosting on Heroku
-
-Now that we have a backend to our applications, we use Heroku for hosting. Please note that while **Heroku is free**, it will request credit card information if you have more than 5 applications at a time or are adding a database. 
-
-Please see [Heroku’s Account Verification Information](https://devcenter.heroku.com/articles/account-verification) for more details. 
 
 ## Technology used
 * Node
@@ -117,15 +102,90 @@ Please see [Heroku’s Account Verification Information](https://devcenter.herok
 
 ## Key learning points
 ```javascript
+var path = require('path');
+module.exports = function(app){
+    app.get("/", function(req, res){
+        res.sendFile(path.join(__dirname, "../public/home.html"));
+    });
+// need to use path.join method if the concatenation cantain ../ 
+    app.get("/survey", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/survey.html"));
+    });
+}
+```  
+```javascript
+//node file system quick reference
+fs.readFile(path.join(__dirname, "../data/friends.txt"),"utf8" , function(err,data){
+    if (err) {
+        return console.log(err);
+    }
+    // console.log(data);
+    user = JSON.parse(data);
+    console.log(user);
+});
+
+fs.writeFile(path.join(__dirname, "../data/friends.txt"),JSON.stringify(user) , function(err){
+    if (err) {
+        return console.log(err);
+    }
+});
+
+```  
+```javascript
+//define a fucntion to compare the score property of one obj from the obj array to target obj
+function compare(obj,targetObj){
+    var totalDiff = 0;  //capture the difference of each score inside the score array
+    for(var i = 0; i<10; i++){
+        totalDiff += Math.abs(parseInt(obj.score[i]) - parseInt(targetObj.score[i]));
+    }
+    return totalDiff;
+}
+```  
+```javascript
+var path = require('path');
+var bodyParser = require('body-parser');
+var fs = require("fs");
+var users = require("../data/friends.js");
+```  
+```javascript
+function createRadioBtn(num){
+    var str = "";
+    for(var i = 1 ; i <=5 ; i++){
+       str +=  "<div class=\"form-check form-check-inline\">"+
+                        "<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions"+num+" id=\"inlineRadio"+num+"-"+i+"\" value=\""+i+"\">"+
+                        "<label class=\"form-check-label\">"+i+"</label>  </div>"
+    }
+    // radio buttons need to specify certain name field to group set of radio buttons only set one value;
+    return str;
+}
+```  
+```javascript
+for(var i = 1 ; i <=10 ; i++){
+  var radioBtn = $('#score'+i+' input:radio:checked').val();    //readio button value capture quick reference
+  if(radioBtn == null){ 
+      fillout= false; 
+      console.log(fillout); 
+      alert("Please check all survey field");
+      return;   // using return to break out of the form submit button click listener
+  }
+  score.push(radioBtn);
+}
+```  
+```javascript
+//server.js on the file structure root run this to import logic js files
+require('./app/routing/apiRoutes.js')(app); 
+require('./app/routing/htmlRoutes.js')(app);
 ```  
 
 ## Link to the site
-[Click me]( )
+[Click me](https://polar-thicket-16501.herokuapp.com)
 
 ## Author 
 [Kitty Shen ](https://github.com/kittyshen)
 
 https://github.com/kittyshen
+
+### [Link to Portfolio Site](https://kittyshen.github.io/Portfolio/)
 
 ## License
 Standard MIT License

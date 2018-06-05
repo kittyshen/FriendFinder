@@ -52,7 +52,7 @@
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-warning btn-md" id="add-btn">
-                        <span class="fa fa-fire"></span> Submit</button>
+                        <span class="fa fa-cloud"></span> Submit</button>
                 </div>
             </form>
 
@@ -121,44 +121,35 @@ $("#add-btn").on("click", function (event) {
     var defaultImg = "http://pothal.com/wp-content/uploads/2016/08/unknown-user.jpg";
     // console.log("***"+$("#photo").val().trim());
     
-    if($("#photo").val().trim() != ""){
-        $.get($("#photo").val().trim(), function(data, status){
-            defaultImg = $("#photo").val().trim();
-            
-        }).fail( function(){
-            console.log('error reading url');
-        }).always( function(){
 
-            // userList.push(person);
-            if (!$("#photo").val().trim() ) {
-                alert("Make sure all form fields are filled out.")
-            }
-            else {
-                var person = {
-                name: $("#name").val().trim(),
-                photo: defaultImg,
-                score: score,
-                };
-
-                $.post("/api/friends", person)
-                    .then(function (data) {
-                        console.log(data);
-
-                        $("#content").html("<h2> Your soul match</h2>" + "<img src = '" + data.photo + "' alt='ppl' width ='300px'><h2>" + data.name + "</h2>");
-
-                        alert("you are added.");
-                    });
-
-                //empty the form for new entry
-                $("#name").val("");
-                $("#photo").val("");
-            }
-        });
+    if (!$("#name").val().trim() || !$("#photo").val().trim()) {
+        alert("Make sure all form fields are filled out.")
     }
+    else {
+        defaultImg = $("#photo").val().trim();
+
+        var person = {
+        name: $("#name").val().trim(),
+        photo: defaultImg,
+        score: score,
+        };
+
+        $.post("/api/friends", person)
+            .then(function (data) {
+                console.log(data);
+
+                $("#content").html("<h2> Your soul match</h2>" + "<img src = '" + data.photo + "' alt='ppl' width ='300px'><h2>" + data.name + "</h2>");
+
+                alert("you are added.");
+            });
+
+        //empty the form for new entry
+        $("#name").val("");
+        $("#photo").val("");
+    }
+});
 
     
-
-});
 </script>
 </body>
 </html>

@@ -69,7 +69,6 @@ module.exports = function(app){
             if (err) {
                 return console.log(err);
             }
-            
         });
 
         // fs.readFile(path.join(__dirname, "../data/friends.txt"),"utf8" , function(err,data){
@@ -84,7 +83,7 @@ module.exports = function(app){
         console.log(json);
         // users.push(json);
         // res.json(json); 
-        res.json(returnMatch); 
+        return res.json(returnMatch); 
 
     });
 }
