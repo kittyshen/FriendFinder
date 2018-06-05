@@ -178,7 +178,7 @@ require('./app/routing/htmlRoutes.js')(app);
 ```  
 
 ## Link to the site
-[Click me](https://polar-thicket-16501.herokuapp.com)
+[Click me](https://polar-thicket-16501.herokuapp.com )
 
 ## Author 
 [Kitty Shen ](https://github.com/kittyshen)
