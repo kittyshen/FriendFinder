@@ -12,7 +12,6 @@ You will use Express to handle routing. Make sure you deploy your app to Heroku 
 
 ### Before You Begin
 
-* Check out [this demo version of the site](https://friend-finder-fsf.herokuapp.com/). Use this as a model for how we expect your assignment look and operate.
 
 * Create a folder called `FriendFinder`. Inside the folder, organize your directories so it matches the following:
 
@@ -178,7 +177,7 @@ require('./app/routing/htmlRoutes.js')(app);
 ```  
 
 ## Link to the site
-[Click me](https://polar-thicket-16501.herokuapp.com )
+[Click me](https://kitty-friend-finder.herokuapp.com/ )
 
 ## Author 
 [Kitty Shen ](https://github.com/kittyshen)
